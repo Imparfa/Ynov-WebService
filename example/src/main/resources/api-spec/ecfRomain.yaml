@@ -1,0 +1,203 @@
+openapi: 3.0.1
+
+info:
+  title: Romain ECF API
+  version: 0.0.1
+  description: API for ecf romain fleuriot session mars-avril
+servers:
+  - url: http://localhost:8080
+    description: Local server
+
+tags:
+  - name: admin
+  - name: commentaires
+  - name: vehicule
+
+paths:
+  '/admins':
+    get:
+      tags:
+        - admin
+      summary: List of admins
+      description: List of admins
+      operationId: listAdmin
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Admin'
+    post:
+      tags:
+        - admin
+      summary: Save new admin
+      description: Save new admin
+      operationId: saveAdmin
+      parameters:
+        - in: query
+          name: admin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Admin'
+      responses:
+        '200':
+          description: 'Ok'
+  '/commentaires':
+    get:
+      tags:
+        - commentaires
+      summary: List of commentaires
+      description: List of commentaires
+      operationId: listCommentaire
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Commentaires'
+    post:
+      tags:
+        - commentaires
+      summary: Save new comment
+      description: Save new comment
+      operationId: saveCommentaire
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: integer
+          required: true
+        - in: query
+          name: nom
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: note
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: 'Ok'
+  '/vehicules':
+    get:
+      tags:
+        - vehicule
+      summary: List of vehicule
+      description: List of vehicule
+      operationId: listVehicule
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vehicule'
+    post:
+      tags:
+        - vehicule
+      summary: Save new vehicule
+      description: Save new vehicule
+      operationId: saveVehicule
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: integer
+          required: true
+        - in: query
+          name: photo
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: description
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: prix
+          schema:
+            type: integer
+          required: true
+        - in: query
+          name: annee
+          schema:
+            type: integer
+          required: true
+        - in: query
+          name: kilometrage
+          schema:
+            type: integer
+          required: true
+        - in: query
+          name: caractreristiques
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: equipement
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: option
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: 'Ok'
+components:
+  schemas:
+    Admin:
+      type: object
+      properties:
+        id:
+          type: integer
+        mail:
+          type: string
+        mdp:
+          type: string
+    Commentaires:
+      type: object
+      properties:
+        id:
+          type: integer
+        nom:
+          type: string
+        commentaireText:
+          type: string
+        note:
+          type: string
+    Vehicule:
+      type: object
+      properties:
+        id:
+          type: integer
+        photo:
+          type: string
+        description:
+          type: string
+        prix:
+          type: integer
+        annee:
+          type: integer
+        kilometrage:
+          type: integer
+        caracteristiques:
+          type: string
+        equipement:
+          type: string
+        option:
+          type: string

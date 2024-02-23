@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Studi ECF Serverside
+  jpa:
+    database: POSTGRESQL
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: 'jdbc:postgresql://127.0.0.1:5494/ecf'
+    username: test
+    password: test
+    driver-class-name: org.postgresql.Driver
