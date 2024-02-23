@@ -1,0 +1,145 @@
+openapi: 3.0.1
+
+info:
+  title: Ynov Classroom API
+  version: 0.0.1
+  description: API for ynov classroom web service project
+servers:
+  - url: http://localhost:8080
+    description: Local server
+
+tags:
+  - name: student
+  - name: classroom
+  - name: teacher
+
+paths:
+  '/students':
+    get:
+      tags:
+        - student
+      summary: List of students
+      description: List of students
+      operationId: listStudents
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+    post:
+      tags:
+        - student
+      summary: Save new student
+      description: Save new student
+      operationId: saveStudent
+      parameters:
+        - in: query
+          name: student
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+      responses:
+        '200':
+          description: 'Ok'
+
+  '/classrooms':
+    get:
+      tags:
+        - classroom
+      summary: List of classrooms
+      description: List of classrooms
+      operationId: listClassrooms
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Classroom'
+    post:
+      tags:
+        - classroom
+      summary: Save new classroom
+      description: Save new classroom
+      operationId: saveClassroom
+      parameters:
+        - in: query
+          name: classroom
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Classroom'
+      responses:
+        '200':
+          description: 'Ok'
+
+  '/teachers':
+    get:
+      tags:
+        - teacher
+      summary: List of teachers
+      description: List of teachers
+      operationId: listTeachers
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Teacher'
+    post:
+      tags:
+        - teacher
+      summary: Save new teacher
+      description: Save new teacher
+      operationId: saveTeacher
+      parameters:
+        - in: query
+          name: teacher
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+      responses:
+        '200':
+          description: 'Ok'
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstname:
+          type: string
+        lastname:
+          type: string
+    Classroom:
+      type: object
+      properties:
+        id:
+          type: integer
+        level:
+          type: integer
+        section:
+          type: string
+    Teacher:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstname:
+          type: string
+        lastname:
+          type: string
+        sector:
+          type: integer
