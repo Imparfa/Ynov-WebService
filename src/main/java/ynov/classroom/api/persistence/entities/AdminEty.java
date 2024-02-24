@@ -5,23 +5,22 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-
 @Getter
 @Setter
 @Entity
-@Table(name = "T_CLASSROOM")
-public class ClassroomEty {
+@Table(name = "T_ADMIN")
+public class AdminEty {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "LEVEL")
-    private Integer level;
+    @Column(name = "LOGIN")
+    private String login;
 
-    @Column(name = "SECTION")
-    private String section;
+    @Column(name = "PASSWORD")
+    private String password;
 
-    @Column(name = "NAME")
-    private Integer name;
+    @Column(name = "TOKEN")
+    private String token;
 }

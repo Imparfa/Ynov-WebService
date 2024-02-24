@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: Ynov Classroom API
+  datasource:
+    url: "jdbc:h2:file:./target/db/embedded;MODE=POSTGRESQL;AUTO_SERVER=true"
+    username: root
+    password: root
+    driver-class-name: org.h2.Driver
+  jpa:
+    open-in-view: true
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect

@@ -9,44 +9,12 @@ servers:
     description: Local server
 
 tags:
-  - name: student
   - name: classroom
   - name: teacher
+  - name: student
+  - name: admin
 
 paths:
-  '/students':
-    get:
-      tags:
-        - student
-      summary: List of students
-      description: List of students
-      operationId: listStudents
-      responses:
-        '200':
-          description: 'Ok'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Student'
-    post:
-      tags:
-        - student
-      summary: Save new student
-      description: Save new student
-      operationId: saveStudent
-      parameters:
-        - in: query
-          name: student
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Student'
-      responses:
-        '200':
-          description: 'Ok'
-
   '/classrooms':
     get:
       tags:
@@ -63,23 +31,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Classroom'
-    post:
-      tags:
-        - classroom
-      summary: Save new classroom
-      description: Save new classroom
-      operationId: saveClassroom
-      parameters:
-        - in: query
-          name: classroom
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Classroom'
-      responses:
-        '200':
-          description: 'Ok'
-
   '/teachers':
     get:
       tags:
@@ -96,6 +47,78 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Teacher'
+  '/students':
+    get:
+      tags:
+        - student
+      summary: List of students
+      description: List of students
+      operationId: listStudents
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+  '/admin/login':
+    post:
+      tags:
+        - admin
+      summary: Login into admin
+      description: Login into admin
+      operationId: loginAdmin
+      parameters:
+        - in: query
+          name: login
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "username"
+        - in: query
+          name: password
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "1234"
+
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "40e6215d-b5c6-4896-987c-f30f3678f608"
+        '401':
+          description: 'Unauthorized'
+  '/admin/classrooms':
+    post:
+      tags:
+        - classroom
+      summary: Save new classroom
+      description: Save new classroom
+      operationId: saveClassroom
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewClassroom'
+      responses:
+        '200':
+          description: 'Ok'
+        '401':
+          description: 'Unauthorized'
+  '/admin/teachers':
     post:
       tags:
         - teacher
@@ -103,26 +126,45 @@ paths:
       description: Save new teacher
       operationId: saveTeacher
       parameters:
-        - in: query
-          name: teacher
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Teacher'
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewTeacher'
       responses:
         '200':
           description: 'Ok'
+        '401':
+          description: 'Unauthorized'
+  '/admin/students':
+    post:
+      tags:
+        - student
+      summary: Save new student
+      description: Save new student
+      operationId: saveStudent
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewStudent'
+      responses:
+        '200':
+          description: 'Ok'
+        '401':
+          description: 'Unauthorized'
+
 components:
   schemas:
-    Student:
-      type: object
-      properties:
-        id:
-          type: integer
-        firstname:
-          type: string
-        lastname:
-          type: string
     Classroom:
       type: object
       properties:
@@ -143,3 +185,35 @@ components:
           type: string
         sector:
           type: integer
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstname:
+          type: string
+        lastname:
+          type: string
+    NewClassroom:
+      type: object
+      properties:
+        level:
+          type: integer
+        section:
+          type: string
+    NewTeacher:
+      type: object
+      properties:
+        firstname:
+          type: string
+        lastname:
+          type: string
+        sector:
+          type: integer
+    NewStudent:
+      type: object
+      properties:
+        firstname:
+          type: string
+        lastname:
+          type: string

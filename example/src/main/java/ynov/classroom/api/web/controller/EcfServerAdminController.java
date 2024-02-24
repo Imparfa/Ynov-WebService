@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ynov.classroom.api.web.apis.AdminApi;
 import ynov.classroom.api.web.dtos.AdminDto;
 import ynov.classroom.api.persistence.repositories.AdminRepository;
-import ynov.classroom.api.web.mappers.AdminDtoMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
