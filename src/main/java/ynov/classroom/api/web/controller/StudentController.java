@@ -31,11 +31,13 @@ public class StudentController implements StudentApi {
     }
 
     @Override
-    public ResponseEntity<Void> saveStudent(String authorization, NewStudentDto student) {
+    public ResponseEntity<Void> saveStudent(NewStudentDto newStudentDto, String authorization) {
         if (!adminRepository.existsByToken(authorization))
             return ResponseEntity.badRequest().build();
         var newStudent = new StudentDto();
-        newStudent.id(null).firstname(student.getFirstname()).lastname(student.getLastname());
+        newStudent.id(null)
+                .firstname(newStudentDto.getFirstname())
+                .lastname(newStudentDto.getLastname());
         return classroomRepository.save(mapper.toModel(newStudent)) != null ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
     }
 }

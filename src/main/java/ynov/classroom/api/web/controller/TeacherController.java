@@ -30,15 +30,15 @@ public class TeacherController implements TeacherApi {
     }
 
     @Override
-    public ResponseEntity<Void> saveTeacher(String authorization, NewTeacherDto teacher) {
+    public ResponseEntity<Void> saveTeacher(NewTeacherDto newTeacherDto, String authorization) {
         if (!adminRepository.existsByToken(authorization))
             return ResponseEntity.badRequest().build();
         var newTeacher = new TeacherDto();
         newTeacher.id(null)
-                .firstname(teacher.getFirstname())
-                .lastname(teacher.getLastname())
-                .subject(teacher.getSubject())
-                .level(teacher.getLevel());
+                .firstname(newTeacherDto.getFirstname())
+                .lastname(newTeacherDto.getLastname())
+                .subject(newTeacherDto.getSubject())
+                .level(newTeacherDto.getLevel());
         return classroomRepository.save(mapper.toModel(newTeacher)) != null ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
     }
 }

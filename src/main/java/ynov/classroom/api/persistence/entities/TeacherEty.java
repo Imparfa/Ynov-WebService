@@ -15,12 +15,15 @@ public class TeacherEty {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "First_Name")
+    @Column(name = "FIRSTNAME")
     private String firstname;
 
-    @Column(name = "Subject")
+    @Column(name = "LASTNAME")
+    private String lastname;
+
+    @Column(name = "SUBJECT")
     private Integer subject;
 
-    @Column(name = "Level")
+    @Column(name = "LEVEL")
     private Integer level;
 }

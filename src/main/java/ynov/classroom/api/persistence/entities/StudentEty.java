@@ -11,13 +11,13 @@ import javax.persistence.*;
 @Table(name = "T_STUDENT")
 public class StudentEty {
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "First_Name")
+    @Column(name = "FIRSTNAME")
     private String firstname;
 
-    @Column(name = "Last_Name")
+    @Column(name = "LASTNAME")
     private String lastname;
 }

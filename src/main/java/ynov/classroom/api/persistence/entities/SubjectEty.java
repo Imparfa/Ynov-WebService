@@ -9,13 +9,13 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "T_CLASSROOM")
+@Table(name = "T_SUBJECT")
 public class SubjectEty {
     @Id
-    @Column(name = "id")
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "Subject")
+    @Column(name = "SUBJECT")
     private String subject;
 }

@@ -1,5 +1,6 @@
 package ynov.classroom.api.web.controller;
 
+import io.github.poshjosh.ratelimiter.annotations.Rate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +10,7 @@ import ynov.subject.api.web.apis.AdminApi;
 
 import java.util.UUID;
 
+@Rate(10)
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:8100")

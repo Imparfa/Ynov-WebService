@@ -1,4 +1,4 @@
-package ynov.subject.api.web.controller;
+package ynov.classroom.api.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -30,12 +30,12 @@ public class SubjectController implements SubjectApi {
     }
 
     @Override
-    public ResponseEntity<Void> saveSubject(String authorization, NewSubjectDto subject) {
+    public ResponseEntity<Void> saveSubject(NewSubjectDto newSubjectDto, String authorization) {
         if (!adminRepository.existsByToken(authorization))
             return ResponseEntity.badRequest().build();
         var newSubject = new SubjectDto();
         newSubject.id(null)
-                .subject(subject.getSubject());
+                .subject(newSubjectDto.getSubject());
         return subjectRepository.save(mapper.toModel(newSubject)) != null ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
     }
 }
