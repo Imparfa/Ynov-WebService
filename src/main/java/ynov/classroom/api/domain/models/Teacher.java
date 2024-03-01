@@ -9,5 +9,6 @@ public class Teacher {
     private Integer id;
     private String firstname;
     private String lastname;
-    private String sector;
+    private Integer subject;
+    private Integer level;
 }

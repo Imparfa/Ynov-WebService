@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import ynov.classroom.api.persistence.repositories.AdminRepository;
 import ynov.classroom.api.persistence.repositories.TeacherRepository;
-import ynov.classroom.api.web.apis.TeacherApi;
-import ynov.classroom.api.web.dtos.NewTeacherDto;
-import ynov.classroom.api.web.dtos.TeacherDto;
 import ynov.classroom.api.web.mappers.TeacherDtoMapper;
+import ynov.subject.api.web.apis.TeacherApi;
+import ynov.subject.api.web.dtos.NewTeacherDto;
+import ynov.subject.api.web.dtos.TeacherDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,7 +37,8 @@ public class TeacherController implements TeacherApi {
         newTeacher.id(null)
                 .firstname(teacher.getFirstname())
                 .lastname(teacher.getLastname())
-                .sector(teacher.getSector());
+                .subject(teacher.getSubject())
+                .level(teacher.getLevel());
         return classroomRepository.save(mapper.toModel(newTeacher)) != null ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
     }
 }

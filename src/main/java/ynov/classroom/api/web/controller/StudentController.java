@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import ynov.classroom.api.persistence.repositories.AdminRepository;
 import ynov.classroom.api.persistence.repositories.StudentRepository;
-import ynov.classroom.api.web.apis.StudentApi;
-import ynov.classroom.api.web.dtos.NewStudentDto;
-import ynov.classroom.api.web.dtos.StudentDto;
 import ynov.classroom.api.web.mappers.StudentDtoMapper;
+import ynov.subject.api.web.apis.StudentApi;
+import ynov.subject.api.web.dtos.NewStudentDto;
+import ynov.subject.api.web.dtos.StudentDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

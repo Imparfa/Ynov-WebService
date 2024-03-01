@@ -5,9 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Classroom {
+public class Subject {
     private Integer id;
-    private Integer level;
-    private String section;
-    private Integer order;
+    private String subject;
 }

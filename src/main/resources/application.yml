@@ -2,25 +2,24 @@ spring:
   application:
     name: Ynov Classroom API
   datasource:
-    url: ${DATABASE_JDBC_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
-    driver-class-name: org.h2.Driver
+    url: 'jdbc:postgresql://localhost:5494/TEACHER'
+    username: test
+    password: test
+    driver-class-name: org.postgresql.Driver
   jpa:
     open-in-view: true
     generate-ddl: false
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
 
-
-DATABASE_JDBC_URL: "jdbc:h2:file:./target/db/embedded;MODE=POSTGRESQL;AUTO_SERVER=true"
-DATABASE_USERNAME: root
-DATABASE_PASSWORD: root
 ---
 spring.config.activate.on-profile: localhost
 spring:
   datasource:
+    url: "jdbc:h2:file:./target/db/embedded;MODE=POSTGRESQL;AUTO_SERVER=true"
+    username: root
+    password: root
     driver-class-name: org.h2.Driver
   jpa:
     hibernate:

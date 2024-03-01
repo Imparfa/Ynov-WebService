@@ -11,16 +11,16 @@ import javax.persistence.*;
 @Table(name = "T_ADMIN")
 public class AdminEty {
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "LOGIN")
+    @Column(name = "Login")
     private String login;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "Password")
     private String password;
 
-    @Column(name = "TOKEN")
+    @Column(name = "Token")
     private String token;
 }

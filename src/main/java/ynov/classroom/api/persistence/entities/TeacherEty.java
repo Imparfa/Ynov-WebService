@@ -11,16 +11,16 @@ import javax.persistence.*;
 @Table(name = "T_TEACHER")
 public class TeacherEty {
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "FIRSTNAME")
+    @Column(name = "First_Name")
     private String firstname;
 
-    @Column(name = "LASTNAME")
-    private String lastname;
+    @Column(name = "Subject")
+    private Integer subject;
 
-    @Column(name = "SECTOR")
-    private String sector;
+    @Column(name = "Level")
+    private Integer level;
 }

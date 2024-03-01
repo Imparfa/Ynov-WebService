@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import ynov.classroom.api.persistence.repositories.AdminRepository;
-import ynov.classroom.api.web.apis.AdminApi;
+import ynov.subject.api.web.apis.AdminApi;
 
 import java.util.UUID;
 

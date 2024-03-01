@@ -10,18 +10,12 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "T_CLASSROOM")
-public class ClassroomEty {
+public class SubjectEty {
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "LEVEL")
-    private Integer level;
-
-    @Column(name = "SECTION")
-    private String section;
-
-    @Column(name = "NAME")
-    private Integer name;
+    @Column(name = "Subject")
+    private String subject;
 }
