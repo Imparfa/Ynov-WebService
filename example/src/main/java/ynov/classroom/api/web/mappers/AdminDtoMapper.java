@@ -1,7 +1,6 @@
 package ynov.classroom.api.web.mappers;
 
 import org.mapstruct.Mapper;
-import ynov.classroom.api.domain.models.Admin;
 import ynov.classroom.api.web.dtos.AdminDto;
 
 @Mapper

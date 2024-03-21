@@ -2,8 +2,6 @@ package ynov.classroom.api.persistence.repositories;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import ynov.classroom.api.domain.models.Admin;
-import ynov.classroom.api.domain.ports.AdminPort;
 import ynov.classroom.api.persistence.mappers.AdminEtyMapper;
 
 import java.util.List;

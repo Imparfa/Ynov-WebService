@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import ynov.classroom.api.web.apis.AdminApi;
 import ynov.classroom.api.web.dtos.AdminDto;
-import ynov.classroom.api.persistence.repositories.AdminRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,0 +1,128 @@
+openapi: 3.0.1
+
+info:
+  title: FEDET Epicerie Solidaire API
+  version: 0.0.1
+  description: API for FEDET Epicerie Solidaire web service project
+servers:
+  - url: http://localhost:8080
+    description: Local server
+
+tags:
+  - name: user
+  - name: admin
+
+
+paths:
+  '/users':
+    get:
+      tags:
+        - user
+      summary: List of users
+      description: List of users
+      operationId: listUsers
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      tags:
+        - user
+      summary: Add a user
+      description: Add a user
+      operationId: addUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: 'Bad request'
+
+  '/admins':
+    get:
+      tags:
+        - admin
+      summary: List of admins
+      description: List of admins
+      operationId: listAdmins
+      responses:
+        '200':
+          description: 'Ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Admin'
+
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        address:
+          type: string
+        isStudent:
+          type: boolean
+        isWorker:
+          type: boolean
+        household:
+          type: integer
+        formation:
+          type: string
+        graduation:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      required:
+        - id
+        - firstName
+        - lastName
+        - address
+        - isStudent
+        - isWorker
+        - household
+        - formation
+        - graduation
+        - email
+
+    Admin:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+      required:
+        - id
+        - username
+        - password
+        - email
+

@@ -8,14 +8,14 @@
     <version>2.7.17</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>ynov.subject</groupId>
+  <groupId>fedet.epicerie</groupId>
   <artifactId>api</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>api</name>
-  <description>Ynov Classroom Web Service (API)</description>
+  <description>Fedet Epicerie Solidaire API</description>
   <properties>
     <java.version>11</java.version>
-    <java.code.base-package>ynov.subject.api</java.code.base-package>
+    <java.code.base-package>fedet.epicerie.api</java.code.base-package>
     <project.build.resourcesDirectory>${project.basedir}/src/main/resources</project.build.resourcesDirectory>
 
     <maven.plugin.openapi-generator.version>6.2.1</maven.plugin.openapi-generator.version>
@@ -65,11 +65,16 @@
       <artifactId>mapstruct-processor</artifactId>
       <version>1.4.2.Final</version>
     </dependency>
-      <dependency>
-          <groupId>io.github.poshjosh</groupId>
-          <artifactId>rate-limiter-spring</artifactId>
-          <version>0.7.0</version>
-      </dependency>
+    <dependency>
+      <groupId>com.google.zxing</groupId>
+      <artifactId>core</artifactId>
+      <version>3.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.zxing</groupId>
+      <artifactId>javase</artifactId>
+      <version>3.4.0</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -145,12 +150,12 @@
         </configuration>
         <executions>
           <execution>
-            <id>generate-api-ynov-subject</id>
+            <id>generate-api-fedet-epicerie</id>
             <goals>
               <goal>generate</goal>
             </goals>
             <configuration>
-              <inputSpec>${project.build.resourcesDirectory}/api-spec/ynovClassroom.yaml</inputSpec>
+              <inputSpec>${project.build.resourcesDirectory}/api-spec/fedetEpicerieAPI.yaml</inputSpec>
             </configuration>
           </execution>
         </executions>
